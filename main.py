@@ -4,7 +4,7 @@ c = ics.Calendar()
 
 cur_date = None
 
-with open("input.txt", "r") as f:
+with open("camp.txt", "r") as f:
     for line in f:
         if line.startswith("Date:"):
             cur_date = line[5:].strip()
@@ -18,5 +18,5 @@ with open("input.txt", "r") as f:
             name = " ".join(line[1:]).strip()
             c.events.add(ics.Event(name=name, begin=cur_date + " " + begin, end=cur_date + " " + end))
 
-with open('export.ics', 'w') as my_file:
+with open('camp.ics', 'w') as my_file:
     my_file.writelines(c.serialize_iter())
